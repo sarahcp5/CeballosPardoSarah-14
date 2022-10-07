@@ -1,3 +1,6 @@
+import config from "../config/config.js";
+
+const PORT = config.app.PORT;
 const socket = io.connect();
 let products = [];
 
@@ -74,5 +77,5 @@ function emptyInput(value) {
 };
 
 function logout() {
-    location.href = "http://localhost:8080/logout";
+    location.href = "http://localhost:" + PORT + "/logout";
 };

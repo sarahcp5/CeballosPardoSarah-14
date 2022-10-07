@@ -13,8 +13,8 @@ import config from './config/config.js';
 
 const app = express();
 const PORT = config.app.PORT;
-const MONGO_URL = config.mongo.MONGO_URL;
-
+const MONGO_URL = config.app.MONGO_URL;
+console.log(PORT, "----", MONGO_URL)
 const server = app.listen(PORT, () => {
     console.log(`Servidor HTTP escuchando en el puerto ${server.address().port}`);
 });
@@ -125,7 +125,7 @@ app.get('/api/chats',async(req,res) => {
     res.send(mensajes);
 });
 
-router.get('/info', async(req, res,) => {
+app.get('/info', async(req, res,) => {
     const info = config.information;
     res.send(info);
 })

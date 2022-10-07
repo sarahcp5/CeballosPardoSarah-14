@@ -1,4 +1,7 @@
+import config from "../config/config.js";
+
 const loginForm = document.getElementById('loginForm');
+const PORT = config.app.PORT;
 
 loginForm.addEventListener('submit',async(e) => {
   e.preventDefault();
@@ -13,14 +16,14 @@ loginForm.addEventListener('submit',async(e) => {
     }
   }).then(result => result.json()).then(json => {
     if(json.status != "success") {
-      location.href = "http://localhost:8080/loginfail";
+      location.href = "http://localhost:" + PORT + "/loginfail";
     } 
     else {
-      window.location.href = "http://localhost:8080/api";
+      window.location.href = "http://localhost:" + PORT + "/api";
     }
   });
 });
 
 function redirect() {
-  window.location.href = "http://localhost:8080/";
+  window.location.href = "http://localhost:" + PORT + "/";
 };

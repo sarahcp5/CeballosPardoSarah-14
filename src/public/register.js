@@ -1,4 +1,7 @@
+import config from "../config/config.js";
+
 const formUser = document.getElementById('registerForm');
+const PORT = config.app.PORT;
 
 formUser.addEventListener('submit',async(e) => {
     e.preventDefault();
@@ -16,7 +19,7 @@ formUser.addEventListener('submit',async(e) => {
     }).then(result => result.json()).then(json => {
         console.log(json);
         if(json.status != "success") {
-            location.href = "http://localhost:8080/registerfail";
+            location.href = "http://localhost:" + PORT + "/registerfail";
         }
         else {
           setTimeout(() => {
@@ -27,5 +30,5 @@ formUser.addEventListener('submit',async(e) => {
 });
 
 function redirect() {
-    window.location.href = "http://localhost:8080/login";
+    window.location.href = "http://localhost:" + PORT + "/login";
 };
